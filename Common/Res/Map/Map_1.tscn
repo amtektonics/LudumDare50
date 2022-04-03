@@ -1,0 +1,68 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Common/Res/Tiles.tres" type="TileSet" id=1]
+[ext_resource path="res://Common/Res/Map/Map_1.gd" type="Script" id=2]
+[ext_resource path="res://Common/Res/Themes/DefaultTheme.tres" type="Theme" id=3]
+[ext_resource path="res://Assets/Clock.png" type="Texture" id=4]
+
+[node name="Map_1" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 0, 2, 1, 1, 2, 196610, 2, 2, 196610, 3, 2, 196610, 4, 2, 196610, 5, 2, 3, 65536, 2, 65536, 65537, 0, 0, 65538, 0, 0, 65539, 0, 0, 65540, 0, 0, 65541, 2, 65536, 131072, 2, 65536, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0, 131076, 0, 0, 131077, 2, 65536, 196608, 2, 65536, 196609, 0, 0, 196610, 0, 0, 196611, 0, 0, 196612, 0, 0, 196613, 2, 65536, 262144, 2, 65536, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0, 262148, 0, 0, 262149, 2, 65536, 327680, 2, 131073, 327681, 2, 196610, 327682, 2, 196610, 327683, 2, 196610, 327684, 2, 196610, 327685, 2, 131075 )
+
+[node name="Center" type="Node2D" parent="."]
+position = Vector2( 96, 96 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CC" type="CenterContainer" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme = ExtResource( 3 )
+
+[node name="NoMoves" type="Label" parent="CanvasLayer/CC"]
+margin_left = 678.0
+margin_top = 426.0
+margin_right = 922.0
+margin_bottom = 473.0
+text = "No Valid Moves"
+
+[node name="Turn" type="Label" parent="CanvasLayer"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -160.0
+margin_top = -120.0
+margin_right = -57.0
+margin_bottom = -73.0
+theme = ExtResource( 3 )
+text = "Turn: 1"
+
+[node name="CountDown" type="Label" parent="CanvasLayer"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -263.0
+margin_top = -119.0
+margin_right = 263.0
+margin_bottom = -72.0
+theme = ExtResource( 3 )
+text = "10 Turns Until FireFighters Arive"
+
+[node name="Clock" type="TextureRect" parent="CanvasLayer"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -176.0
+margin_top = -264.0
+margin_right = -48.0
+margin_bottom = -136.0
+texture = ExtResource( 4 )

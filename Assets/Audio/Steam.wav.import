@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Steam.wav-ceab8164da98005c21361e8c83a9fd70.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Steam.wav"
+dest_files=[ "res://.import/Steam.wav-ceab8164da98005c21361e8c83a9fd70.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
