@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/BurningBackground.ogg-39301bade0616824ee44195b1a735e04.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/BurningBackground.ogg"
+dest_files=[ "res://.import/BurningBackground.ogg-39301bade0616824ee44195b1a735e04.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

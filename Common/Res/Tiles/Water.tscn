@@ -1,11 +1,30 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Assets/Tiles1.png" type="Texture" id=1]
 [ext_resource path="res://Common/Res/Fonts/PMarker_16_W.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Common/Res/Tiles/Water.gd" type="Script" id=3]
+[ext_resource path="res://Assets/steamparticles.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Audio/Steam.wav" type="AudioStream" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 16 )
+
+[sub_resource type="Curve" id=9]
+_data = [ Vector2( 0, 0.697727 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=8]
+curve = SubResource( 9 )
+
+[sub_resource type="ParticlesMaterial" id=10]
+emission_shape = 1
+emission_sphere_radius = 0.5
+spread = 0.0
+flatness = 1.0
+gravity = Vector3( 0, -10, 0 )
+angular_velocity = 5.74
+linear_accel = 60.78
+radial_accel = 10.0
+scale_curve = SubResource( 8 )
 
 [node name="Water" type="Area2D"]
 script = ExtResource( 3 )
@@ -25,3 +44,17 @@ margin_right = 14.0
 margin_bottom = 5.0
 custom_fonts/font = ExtResource( 2 )
 text = "5"
+
+[node name="SteamParticles" type="Particles2D" parent="."]
+emitting = false
+amount = 500
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+process_material = SubResource( 10 )
+texture = ExtResource( 4 )
+
+[node name="SteamSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
+volume_db = 3.0
+pitch_scale = 1.25

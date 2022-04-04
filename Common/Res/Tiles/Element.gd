@@ -33,6 +33,21 @@ func set_element_amount(value):
 	_element_amount = value
 	$ElementValue.text = str(_element_amount)
 
+func kill_element():
+	$ElementValue.visible = false
+	$Sprite.visible = false
+	
+	$SteamParticles.emitting = true
+	$SteamSound.pitch_scale = rand_range(0.9, 1.25)
+	$SteamSound.play()
+	
+	var t = Timer.new()
+	t.set_wait_time(1.0)
+	t.connect("timeout", self, "_death_timeout")
+	t.set_autostart(true)
+	add_child(t)
+	
+
 func get_element_amount():
 	return _element_amount
 
@@ -59,3 +74,6 @@ func _mouse_exited_area():
 
 func get_element():
 	return null
+
+func _death_timeout():
+	queue_free()

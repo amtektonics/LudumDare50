@@ -1,11 +1,14 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Common/Res/Tiles.tres" type="TileSet" id=1]
-[ext_resource path="res://Common/Res/Map/Map_1.gd" type="Script" id=2]
+[ext_resource path="res://Common/Res/Map/TutMap.gd" type="Script" id=2]
 [ext_resource path="res://Common/Res/Themes/DefaultTheme.tres" type="Theme" id=3]
 [ext_resource path="res://Assets/Clock.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Fire.png" type="Texture" id=5]
 [ext_resource path="res://Common/Res/Fonts/PMarker_64_W.tres" type="DynamicFont" id=6]
+[ext_resource path="res://Common/Res/Fonts/PMarker_16_W.tres" type="DynamicFont" id=7]
+[ext_resource path="res://Common/Res/Map/Tutorial.gd" type="Script" id=8]
+[ext_resource path="res://Assets/Arrow.png" type="Texture" id=9]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 5 )
@@ -31,29 +34,29 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="Map_1" type="Node2D"]
+[node name="Tutorial" type="Node2D"]
 script = ExtResource( 2 )
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 32, 32 )
 format = 1
-tile_data = PoolIntArray( 0, 2, 1, 1, 2, 196610, 2, 2, 196610, 3, 2, 196610, 4, 2, 196610, 5, 2, 2, 6, 2, 196610, 7, 2, 196610, 8, 2, 196610, 9, 2, 196610, 10, 2, 196610, 11, 2, 3, 65536, 2, 65536, 65537, 0, 0, 65538, 0, 0, 65539, 0, 0, 65540, 0, 0, 65541, 2, 131072, 65542, 0, 0, 65543, 0, 0, 65544, 0, 0, 65545, 0, 0, 65546, 0, 0, 65547, 2, 65536, 131072, 2, 65536, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0, 131076, 0, 0, 131077, 0, 0, 131078, 0, 0, 131079, 0, 0, 131080, 0, 0, 131081, 0, 0, 131082, 0, 0, 131083, 2, 65536, 196608, 2, 65536, 196609, 0, 0, 196610, 0, 0, 196611, 0, 0, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0, 196616, 0, 0, 196617, 0, 0, 196618, 0, 0, 196619, 2, 65536, 262144, 2, 65536, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0, 262148, 0, 0, 262149, 2, 0, 262150, 0, 0, 262151, 0, 0, 262152, 0, 0, 262153, 0, 0, 262154, 0, 0, 262155, 2, 65536, 327680, 2, 131073, 327681, 2, 196610, 327682, 2, 196610, 327683, 2, 196610, 327684, 2, 196610, 327685, 2, 131074, 327686, 2, 196610, 327687, 2, 196610, 327688, 2, 196610, 327689, 2, 196610, 327690, 2, 196610, 327691, 2, 131075 )
+tile_data = PoolIntArray( 0, 2, 1, 1, 2, 196610, 2, 2, 196610, 3, 2, 196610, 4, 2, 196610, 5, 2, 3, 65536, 2, 65536, 65537, 0, 0, 65538, 0, 0, 65539, 0, 0, 65540, 0, 0, 65541, 2, 65536, 131072, 2, 65536, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0, 131076, 0, 0, 131077, 2, 65536, 196608, 2, 65536, 196609, 0, 0, 196610, 0, 0, 196611, 0, 0, 196612, 0, 0, 196613, 2, 65536, 262144, 2, 65536, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0, 262148, 0, 0, 262149, 2, 65536, 327680, 2, 131073, 327681, 2, 196610, 327682, 2, 196610, 327683, 2, 196610, 327684, 2, 196610, 327685, 2, 131075 )
 
 [node name="Center" type="Node2D" parent="."]
-position = Vector2( 176, 96 )
+position = Vector2( 96, 96 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="CC" type="CenterContainer" parent="CanvasLayer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_pivot_offset = Vector2( -853, -183 )
+margin_left = -141.0
+margin_top = -6.0
+margin_right = -141.0
+margin_bottom = -6.0
 mouse_filter = 2
 theme = ExtResource( 3 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Placing" type="Label" parent="CanvasLayer/CC"]
 visible = false
@@ -93,9 +96,6 @@ margin_right = -57.0
 margin_bottom = -73.0
 theme = ExtResource( 3 )
 text = "Turn: 1"
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="CountDown" type="Label" parent="CanvasLayer"]
 visible = false
@@ -109,9 +109,6 @@ margin_right = 263.0
 margin_bottom = -72.0
 theme = ExtResource( 3 )
 text = "10 Turns Until FireFighters Arive"
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Clock" type="TextureRect" parent="CanvasLayer"]
 visible = false
@@ -124,9 +121,6 @@ margin_top = -264.0
 margin_right = -48.0
 margin_bottom = -136.0
 texture = ExtResource( 4 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="NextPhaseBtn" type="Button" parent="CanvasLayer"]
 anchor_left = 1.0
@@ -139,18 +133,12 @@ margin_right = -16.0
 margin_bottom = -16.0
 theme = ExtResource( 3 )
 text = "Next Phase"
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Placeable" type="Panel" parent="CanvasLayer"]
 margin_right = 144.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 144, 64 )
 theme = ExtResource( 3 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Sprite" type="AnimatedSprite" parent="CanvasLayer/Placeable"]
 position = Vector2( 32, 32 )
@@ -167,16 +155,107 @@ text = "0"
 align = 1
 valign = 1
 
-[node name="WinLose" type="Control" parent="CanvasLayer"]
-visible = false
-margin_left = 800.0
-margin_top = 450.0
-margin_right = 800.0
-margin_bottom = 450.0
+[node name="Tutorial" type="Control" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 theme = ExtResource( 3 )
+script = ExtResource( 8 )
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="TextureRect" type="ColorRect" parent="CanvasLayer/Tutorial"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.192157, 0.192157, 0.192157, 0.486275 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ResPannel" type="Panel" parent="CanvasLayer/Tutorial"]
+visible = false
+margin_left = 144.0
+margin_top = 125.0
+margin_right = 611.0
+margin_bottom = 291.0
+
+[node name="ResLabel" type="RichTextLabel" parent="CanvasLayer/Tutorial/ResPannel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_bottom = 5.0
+custom_fonts/normal_font = ExtResource( 7 )
+text = "At the start of your turn you will get more fire that you can place durring the placment phase.
+The amount you get diminishes over time and is determined by how many tiles you have.
+If your income reaches zero you will lose the level"
+
+[node name="ResNextBtn" type="Button" parent="CanvasLayer/Tutorial/ResPannel"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -63.0
+margin_top = -38.0
+margin_right = -16.0
+margin_bottom = -8.0
+custom_fonts/font = ExtResource( 7 )
+text = "Next"
+
+[node name="Arrow" type="TextureRect" parent="CanvasLayer/Tutorial/ResPannel"]
+margin_left = -96.0
+margin_top = -48.0
+margin_right = -80.0
+margin_bottom = -10.0
+rect_rotation = -29.4545
+rect_scale = Vector2( 3, 3 )
+texture = ExtResource( 9 )
+
+[node name="FireTilePanel" type="Panel" parent="CanvasLayer/Tutorial"]
+visible = false
+margin_left = 211.0
+margin_top = 383.0
+margin_right = 606.0
+margin_bottom = 568.0
+
+[node name="Arrow" type="TextureRect" parent="CanvasLayer/Tutorial/FireTilePanel"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = 73.0
+margin_top = -112.0
+margin_right = 89.0
+margin_bottom = -74.0
+rect_rotation = 34.8982
+rect_scale = Vector2( 3, 3 )
+texture = ExtResource( 9 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Tutorial/FireTilePanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -44.0
+custom_fonts/normal_font = ExtResource( 7 )
+text = "When a tile has more than one unit it can be moved to a ajecent tile or another fire tile that is connected
+It can also be used to evaporate water tiles.
+Fill of the tile tiles with fire to win."
+
+[node name="FireTilleNextBtn" type="Button" parent="CanvasLayer/Tutorial/FireTilePanel"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -63.0
+margin_top = -38.0
+margin_right = -16.0
+margin_bottom = -8.0
+custom_fonts/font = ExtResource( 7 )
+text = "Next"
+
+[node name="WinLose" type="Control" parent="CanvasLayer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 3 )
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/WinLose"]
 anchor_right = 1.0
@@ -189,6 +268,10 @@ anchor_bottom = 1.0
 
 [node name="WinC" type="Control" parent="CanvasLayer/WinLose/CC"]
 visible = false
+margin_left = 800.0
+margin_top = 450.0
+margin_right = 800.0
+margin_bottom = 450.0
 
 [node name="Label" type="Label" parent="CanvasLayer/WinLose/CC/WinC"]
 anchor_left = 0.5
@@ -230,6 +313,10 @@ text = "Return to level Select"
 
 [node name="LoseC" type="Control" parent="CanvasLayer/WinLose/CC"]
 visible = false
+margin_left = 800.0
+margin_top = 450.0
+margin_right = 800.0
+margin_bottom = 450.0
 
 [node name="Label" type="Label" parent="CanvasLayer/WinLose/CC/LoseC"]
 anchor_left = 0.5
@@ -261,3 +348,6 @@ wait_time = 1.25
 
 [node name="MoveTimer" type="Timer" parent="."]
 wait_time = 1.25
+
+[connection signal="pressed" from="CanvasLayer/Tutorial/ResPannel/ResNextBtn" to="CanvasLayer/Tutorial" method="_on_ResNextBtn_pressed"]
+[connection signal="pressed" from="CanvasLayer/Tutorial/FireTilePanel/FireTilleNextBtn" to="CanvasLayer/Tutorial" method="_on_FireTilleNextBtn_pressed"]
